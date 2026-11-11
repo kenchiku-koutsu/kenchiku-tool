@@ -67,7 +67,7 @@ function renderResult(){
  plain('困っていること',d.name);
  plain('現在の状況',$('situation').value.trim()||'未記入');
  const qs=section('3つの確認事項');
- d.qs.forEach((q,i)=>numbered(qs,i+1,q[0],['状態：'+statuses[i],'コメント：'+(notes[i].trim()||'未記入')]));
+ d.qs.forEach((q,i)=>numbered(qs,i+1,q[2],['状態：'+statuses[i],'コメント：'+(notes[i].trim()||'未記入')]));
  plain('最優先で整理すること',r.priority);
  const actions=section('次の行動');r.steps.forEach((step,i)=>numbered(actions,i+1,step));
  plain('確認する人',$('owner').value.trim()||'未定');
