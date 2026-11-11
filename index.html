@@ -55,9 +55,9 @@ function recommendation(){
  const steps=x.s==='確認できない'
  ? [`「${q[2]}」を確認できない理由を整理する（資料不足・担当者不明・判断未了など）。`,`${q[3]}に、必要な資料の所在や判断できる人を確認する。`,`確認の手掛かりが得られたら、${q[4]}。`]
  : [`${q[3]}に「${q[2]}」を確認する。`,`${q[4]}。`,remaining.length?`ほかの未解決項目（${remaining.map(z=>z.i+1).join('・')}番）も、担当者と確認方法を決める。`:'確認した結果を関係者と共有し、次の判断につなげる。'];
- return {priority:`${x.i+1}. ${q[2]}`,steps};
+ return {priority:q[2],steps};
 }
-function makeMemo(){const d=DATA[index],r=recommendation(),s=$('situation').value.trim(),owner=$('owner').value.trim(),date=formattedDate()[1];return `【建築計画の交通整理｜結果】\n\n■ 困っていること\n${d.name}\n\n■ 現在の状況\n${s||'未記入'}\n\n■ 3つの確認事項\n${d.qs.map((q,i)=>`${i+1}. ${q[0]}\n状態：${statuses[i]}\nコメント：${notes[i].trim()||'未記入'}`).join('\n')}\n\n■ 最優先で整理すること\n${r.priority}\n\n■ 次の行動\n${r.steps.map((step,i)=>`${i+1}. ${step}`).join("\n")}\n\n■ 確認する人\n${owner||'未定'}\n\n■ 確認予定日\n${date}\n\n※本メモは入力内容に基づく整理の補助です。法令・設計・予算・工程の専門的な確認や判断に代わるものではありません。`}
+function makeMemo(){const d=DATA[index],r=recommendation(),s=$('situation').value.trim(),owner=$('owner').value.trim(),date=formattedDate()[1];return `【建築計画の交通整理｜結果】\n\n■ 困っていること\n${d.name}\n\n■ 現在の状況\n${s||'未記入'}\n\n■ 3つの確認事項\n${d.qs.map((q,i)=>`${i+1}. ${q[0]}\n状態：${statuses[i]}\nコメント：${notes[i].trim()||'未記入'}`).join('\n')}\n\n■ まず確認すること\n${r.priority}\n\n■ 次の行動\n${r.steps.map((step,i)=>`${i+1}. ${step}`).join("\n")}\n\n■ 確認する人\n${owner||'未定'}\n\n■ 確認予定日\n${date}\n\n※本メモは入力内容に基づく整理の補助です。法令・設計・予算・工程の専門的な確認や判断に代わるものではありません。`}
 function renderResult(){
  const root=$('memo'),d=DATA[index],r=recommendation();
  root.replaceChildren();
@@ -66,10 +66,10 @@ function renderResult(){
  const numbered=(parent,n,body,details)=>{const row=document.createElement('div');row.className='result-numbered';const num=document.createElement('span');num.className='result-num';num.textContent=n+'.';const content=document.createElement('div');content.className='result-item-body';const main=document.createElement('div');main.textContent=body.replace(/(.)(か[？?])$/u,(_,before,end)=>before+'\u2060'+end.replace('か','か\u2060'));content.appendChild(main);(details||[]).forEach(t=>{const sub=document.createElement('div');sub.className='result-detail';sub.textContent=t;content.appendChild(sub)});row.append(num,content);parent.appendChild(row)};
  plain('困っていること',d.name);
  plain('現在の状況',$('situation').value.trim()||'未記入');
+ plain('まず確認すること',r.priority);
+ const actions=section('次の行動');r.steps.forEach((step,i)=>numbered(actions,i+1,step));
  const qs=section('3つの確認事項');
  d.qs.forEach((q,i)=>numbered(qs,i+1,q[2],['状態：'+statuses[i],'コメント：'+(notes[i].trim()||'未記入')]));
- plain('最優先で整理すること',r.priority);
- const actions=section('次の行動');r.steps.forEach((step,i)=>numbered(actions,i+1,step));
  plain('確認する人',$('owner').value.trim()||'未定');
  plain('確認予定日',formattedDate()[1]);
  const note=document.createElement('p');note.className='result-footnote';note.textContent='※本メモは入力内容に基づく整理の補助です。法令・設計・予算・工程の専門的な確認や判断に代わるものではありません。';root.appendChild(note);
@@ -83,9 +83,9 @@ function preparePrint(){
  const head=printText(root,'header','ph','');printText(head,'h1','','建築計画の交通整理｜結果');printText(head,'div','subtitle','無料Web版／確認事項と次の行動');
  printSection(root,'困っていること',d.name);
  printSection(root,'現在の状況',$('situation').value.trim());
+ printSection(root,'まず確認すること',r.priority);
  const sec=printText(root,'section','ps','');printText(sec,'h2','','3つの確認事項');
  d.qs.forEach((q,i)=>{const row=printText(sec,'div','question','');printText(row,'div','qtitle',`${i+1}. ${q[0]}`);printText(row,'div','qstate',`回答：${statuses[i]}`);printText(row,'div','qnote',`コメント：${notes[i].trim()||'未記入'}`)});
- printSection(root,'最優先で整理すること',r.priority);
  const act=printText(root,'section','ps next-actions','');printText(act,'h2','','次の行動｜まず取り組む3つのこと');const ol=printText(act,'ol','','');r.steps.forEach(step=>printText(ol,'li','',step));
  const grid=printText(root,'div','pgrid','');printSection(grid,'確認する人',$('owner').value.trim()||'未定');printSection(grid,'確認予定日',formattedDate()[1]||'未設定');
  printText(root,'div','footnote','※入力内容に基づく整理の補助です。法令・設計・予算・工程の専門的な確認や判断に代わるものではありません。');
