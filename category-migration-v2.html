@@ -1,0 +1,114 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>建築計画の交通整理｜無料版</title><style>:root{font-family:system-ui,-apple-system,'Noto Sans JP',sans-serif;color:#17263b;background:#f5f7fa}*{box-sizing:border-box}body{margin:0}.wrap{max-width:760px;margin:auto;padding:20px 14px 60px}header{background:#142d4a;color:white;padding:26px 18px;border-radius:16px;margin-bottom:18px}h1{font-size:1.5rem;margin:0 0 10px}h2{font-size:1.13rem;margin:0 0 16px}.sub{color:#526277;font-size:.9rem;line-height:1.7}header .sub{color:#e3eaf2}.panel{background:white;border:1px solid #dce3eb;border-radius:14px;padding:20px 16px;margin-bottom:16px}.choices{display:grid;gap:9px}.choice{display:flex;align-items:flex-start;gap:10px;padding:12px;border:1px solid #cbd5e1;border-radius:10px;cursor:pointer}.choice:has(input:checked){background:#fff6ec;border-color:#d86d1a}.choice input{margin-top:4px;accent-color:#d66c1c}textarea,input[type=text]{width:100%;padding:12px;border:1px solid #b8c5d3;border-radius:9px;font:inherit;background:#fff;color:#17263b}textarea{resize:vertical;min-height:85px}textarea::placeholder,input::placeholder{color:#8792a1}.q{border-top:1px solid #e5e9ef;padding:18px 0 6px}.q:first-child{border-top:0;padding-top:0}.qtitle{font-weight:700;line-height:1.6;margin-bottom:12px}.status{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.status label{border:1px solid #c5d0db;border-radius:9px;padding:9px 11px;font-size:.89rem;cursor:pointer}.status label:has(input:checked){background:#eaf2fb;border-color:#35699d}.status input{accent-color:#35699d}.hint{font-size:.82rem;color:#617186;margin:6px 0 10px}.datebox{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.datevalue{border:1px solid #b8c5d3;padding:12px;border-radius:9px;min-width:160px;font-variant-numeric:tabular-nums}.native-date{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}button{font:inherit;cursor:pointer;border:0;border-radius:9px;padding:12px 15px;background:#153b63;color:white;font-weight:700}button.secondary{background:#e9eef4;color:#17314d}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #e8a46b;outline-offset:2px}.memo{background:#f7f9fc;border:1px solid #dce3eb;border-radius:10px;padding:16px;line-height:1.75;white-space:pre-wrap;overflow-wrap:anywhere}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.small{font-size:.82rem;color:#617186}.tag{display:inline-block;font-size:.77rem;color:#925012;background:#fff0df;border-radius:6px;padding:3px 8px;margin-bottom:10px}@media(max-width:450px){.panel{padding:17px 13px}.status{display:grid;grid-template-columns:1fr 1fr}.status label:last-child{grid-column:1/-1}.status label{padding:11px}.wrap{padding:12px 10px 40px}}@page{size:A4 portrait;margin:10mm}
+#printSheet{display:none}
+@media print{
+ html,body{width:100%;height:auto!important;margin:0!important;padding:0!important;background:#fff!important;color:#17263b!important}
+ .wrap{display:none!important}
+ #printSheet{display:block!important;position:static!important;box-sizing:border-box;width:190mm;max-width:190mm;margin:0 auto;padding:0!important;font-family:system-ui,-apple-system,'Noto Sans JP',sans-serif;font-size:9pt;line-height:1.35;overflow:visible!important}
+ #printSheet *{box-sizing:border-box}
+ #printSheet .ph{border-bottom:2px solid #142d4a;padding:0 0 2.5mm;margin:0 0 3mm}
+ #printSheet h1{font-size:16pt;margin:0;line-height:1.2}
+ #printSheet .subtitle{font-size:8pt;color:#506079;margin-top:1mm}
+ #printSheet .ps{margin:0 0 3mm;break-inside:avoid;page-break-inside:avoid}
+ #printSheet h2{font-size:9pt;margin:0 0 1.3mm;padding:1mm 2mm;background:#eaf0f7;border-left:3px solid #e48a39}
+ #printSheet .pv{white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:0 1.5mm}
+ #printSheet .question{border:1px solid #d4dce7;border-radius:2mm;padding:2mm;margin-bottom:2mm;break-inside:avoid;page-break-inside:avoid}
+ #printSheet .qtitle{font-weight:700;margin-bottom:1mm}
+ #printSheet .qstate{font-size:8pt;font-weight:700;margin-bottom:1mm}
+ #printSheet .qnote{white-space:pre-wrap;overflow-wrap:anywhere}
+ #printSheet .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:3mm}
+ #printSheet .footnote{font-size:7pt;color:#58677a;border-top:1px solid #d4dce7;padding-top:1.5mm;margin-top:2mm}
+ #printSheet .action{white-space:pre-wrap;overflow-wrap:anywhere}
+ #printSheet .next-actions{border:1.5px solid #d68a3e;background:#fff8ef;padding:2mm 3mm;border-radius:2mm}
+ #printSheet .next-actions h2{background:#fce7cf;border-left:4px solid #cf701e;font-size:10pt}
+ #printSheet .next-actions ol{margin:1.5mm 0 0;padding-left:5mm}
+ #printSheet .next-actions li{margin:0 0 1.5mm;line-height:1.4;overflow-wrap:anywhere}
+ #printSheet.compact .next-actions li{margin-bottom:1mm}
+ #printSheet.tight .next-actions{padding:1mm 2mm}
+ #printSheet.tight .next-actions li{margin-bottom:.5mm}
+ #printSheet.compact{font-size:8pt;line-height:1.22}
+ #printSheet.compact .ps{margin-bottom:2mm}
+ #printSheet.compact .question{padding:1.5mm;margin-bottom:1.5mm}
+ #printSheet.compact h2{margin-bottom:1mm}
+ #printSheet.tight{font-size:7pt;line-height:1.12}
+ #printSheet.tight .ps{margin-bottom:1.2mm}
+ #printSheet.tight .question{padding:1mm;margin-bottom:1mm}
+ #printSheet.tight h1{font-size:12pt}
+ #printSheet.tight h2{font-size:7.5pt;padding:.7mm 1.5mm}
+ #printSheet.tight .footnote{font-size:6pt}
+}
+</style></head><body><main class="wrap"><header><div class="tag">無料・約10分の整理</div><h1>建築計画の交通整理</h1><div class="sub">計画が止まっている理由を整理し、「次に誰に何を確認するか」を見つけるためのシートです。専門的な判断や法令確認を代行するものではありません。</div></header><section class="panel"><h2>① 今、困っていること</h2><div class="choices" id="problems"></div></section><section class="panel"><h2>② 現在の状況</h2><textarea id="situation" rows="3" aria-label="現在の状況"></textarea><p class="small">個人情報、取引先名、未公開の金額などは入力しないでください。</p></section><section class="panel"><h2>③ 3つの確認事項</h2><p class="sub">3つとも表示しています。分かるところから回答してください。コメントは任意です。</p><div id="questions"></div></section><section class="panel"><h2>④ 次に確認する人・予定日</h2><label for="owner">確認する人（任意）</label><input type="text" id="owner" placeholder="例：自分、設計担当者、事業責任者"><p>確認予定日（任意）</p><div class="datebox"><span id="dateDisplay" class="datevalue">未設定</span><button type="button" id="pickDate">カレンダーから選択</button><button type="button" id="clearDate" class="secondary">クリア</button><input type="date" id="nativeDate" class="native-date" aria-label="確認予定日"></div><p class="small">選択欄は YYYY/MM/DD、相談メモは西暦と和暦を併記します。</p></section><section class="panel" id="result"><h2>⑤ 相談メモ</h2><p class="sub">入力に応じて自動更新します。確認できない項目があっても、最初の一歩を提示します。</p><div class="memo" id="memo" aria-live="polite"></div><div class="actions"><button type="button" id="copy">相談メモをコピー</button><button type="button" id="print" class="secondary">印刷・PDF保存</button></div><p id="feedback" class="small" role="status"></p></section><p class="small">この試作版では、入力内容はサーバーへ送信しません。画面を閉じると入力内容は失われます。公開・販売・相談申込み機能は未設定です。</p><section class="panel"><h2>入力内容の自動保存</h2><p id="testSaveStatus" role="status">確認中</p><p class="sub">既存の保存データを読み込みます。元データは変更せず、検証版専用の保存領域を使用します。ブラウザのデータ削除時には失われる場合があります。</p></section></main><article id="printSheet" aria-label="A4印刷用相談メモ"></article><script>
+const DATA=[
+{name:'何から始めればよいか分からない',example:'例：新しく店舗を出したいが、土地探しと設計のどちらから始めればよいか分からない。',qs:[['建物をつくる目的と、解決したい問題は整理できていますか？','例：今の店舗が手狭で、来客対応を改善したい。','建物の目的と解決したい問題','計画を依頼した人や利用部門','目的を一文にまとめ、関係者に確認する'],['予算に何を含めるか確認しましたか？','例：建物の工事費のほか、設計料や外構費も含む。','予算に含める費用の範囲','予算担当者・設計担当者','予算の対象項目を一覧にして確認する'],['使い始めたい時期と、その理由は決まっていますか？','例：賃貸契約が切れる前に移転したい。','使い始めたい日とその理由','事業責任者・利用部門','必要な使用開始日と根拠を確認する']],next:'目的・予算・使用開始時期を一枚に整理し、関係者と計画の前提を合意する'},
+{name:'打ち合わせがまとまらない',example:'例：営業部門は売場を広くしたいが、管理部門は建築費を抑えたいと言っている。',qs:[['意見が違う点を具体的に説明できますか？','例：売場面積を増やすか、予算を守るかで意見が分かれている。','意見が分かれている論点','打ち合わせ参加者','相反する意見を並べて論点を一つに絞る'],['それぞれが重視する理由を聞きましたか？','例：営業部門は売上、管理部門は投資回収を重視している。','それぞれが重視する理由','意見の異なる部門の担当者','各部門の目的と譲れない条件を確認する'],['誰が何を基準に決めるか合意していますか？','例：事業責任者が投資効果と必要機能を比較して決める。','最終判断者と判断基準','事業責任者・承認者','決定者、比較項目、判断期限を明確にする']],next:'論点・各部門の理由・判断者を一枚にまとめ、決定のための打ち合わせを設定する'},
+{name:'予算が合わない',example:'例：工事見積りが予算を超えたが、増額の原因が分からない。',qs:[['予算と見積りの対象範囲は同じですか？','例：予算に外構費が含まれていなかった。','予算と見積りの対象範囲','予算担当者・見積作成者','予算書と見積書の対象項目を並べて比較する'],['差額の大きい項目と内訳を確認しましたか？','例：空調設備の見積額が想定より大きい。','差額の大きい項目と内訳','見積作成者・設計担当者','差額の大きい項目を抽出し、数量・単価・仕様を確認する'],['守る条件と変更できる条件を整理しましたか？','例：部屋数は守り、仕上げ材は変更できる。','変更できない条件と見直せる条件','事業責任者・利用部門','必要機能と変更可能な仕様を分けて整理する']],next:'見積りの差額を確認したうえで、守る機能と見直す仕様を比較し、予算調整案を選ぶ'},
+{name:'期限に間に合うか心配',example:'例：既存店舗の解体日が決まっているが、引渡し後の引っ越し期間を考えていなかった。',qs:[['その期限は完成・引渡し・営業開始のどれですか？','例：3月末は引渡しで、営業開始は4月中旬。','期限が意味する出来事','事業責任者・施工担当者','完成・引渡し・営業開始の日付を区別する'],['営業終了・搬出・明渡し・工事開始の日程を分けていますか？','例：営業終了後に什器搬出の日数が必要。','営業終了から工事開始までの作業日程','店舗運営担当者・移転担当者・施工担当者','搬出・明渡しに必要な作業と期間を確認する'],['今止まっている判断と、次の工程への影響は分かっていますか？','例：設備仕様が未決定で、発注時期が確定できない。','未決定事項と工程への影響','設計担当者・施工担当者','未決定事項の判断期限と遅延影響を確認する']],next:'営業終了から営業開始までの出来事を時系列に並べ、必要な準備期間と判断期限を確認する'},
+{name:'社内承認が進まない',example:'例：上司から計画を見直すように言われたが、何を変更すれば承認されるか分からない。',qs:[['承認できない理由や不足資料を確認しましたか？','例：投資額の根拠と他案との比較が不足している。','承認を妨げている理由と不足資料','上司・承認者','不足資料と承認条件を具体的に聞く'],['費用・機能・時期を比較できる資料がありますか？','例：現行案と縮小案の費用を比較した。','費用・機能・時期の比較資料','企画担当者・設計担当者','現行案と代替案を同じ項目で比較する'],['誰がいつ判断し、遅れた場合の影響は分かっていますか？','例：役員会で判断し、遅れると工事発注に影響する。','判断者・判断期限・遅れた場合の影響','承認者・事務局','承認予定日と工程への影響を確認する']],next:'承認条件と不足資料を整理し、代替案を比較できる形にして判断を依頼する'}
+];
+const $=id=>document.getElementById(id);let index=0;let statuses=['未確認','未確認','未確認'],notes=['','',''];const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function drawProblems(){$('problems').innerHTML=DATA.map((d,i)=>`<label class="choice"><input type="radio" name="problem" value="${i}" ${i===index?'checked':''}><span>${esc(d.name)}</span></label>`).join('');document.querySelectorAll('[name=problem]').forEach(r=>r.addEventListener('change',()=>{saveCategoryDraft();index=Number(r.value);loadCategoryDraft();drawQuestions();refresh();testSave()}))}
+function drawQuestions(){const d=DATA[index];$('situation').placeholder=d.example;$('questions').innerHTML=d.qs.map((q,i)=>`<div class="q"><div class="qtitle">${i+1}. ${esc(q[0])}</div><div class="status">${['確認済み','未確認','確認できない'].map(s=>`<label><input type="radio" name="status${i}" value="${s}" ${statuses[i]===s?'checked':''}>${s}</label>`).join('')}</div><label class="small" for="note${i}">コメント・確認した内容（任意）</label><textarea id="note${i}" rows="2" placeholder="${esc(q[1])}">${esc(notes[i])}</textarea></div>`).join('');d.qs.forEach((_,i)=>{document.querySelectorAll(`[name=status${i}]`).forEach(r=>r.addEventListener('change',()=>{statuses[i]=r.value;refresh()}));$(`note${i}`).addEventListener('input',e=>{notes[i]=e.target.value;refresh()})})}
+function formattedDate(){const s=$('nativeDate').value;if(!s)return ['未設定','未設定'];const [y,m,d]=s.split('-').map(Number);let era='';try{era=new Intl.DateTimeFormat('ja-JP-u-ca-japanese',{era:'long',year:'numeric',month:'long',day:'numeric',timeZone:'UTC'}).format(new Date(s+'T12:00:00Z'))}catch(e){era='和暦表示不可'}return [s.replaceAll('-','/'),`${y}年${m}月${d}日（${era}）`]}
+function recommendation(){
+ const d=DATA[index],unresolved=statuses.map((s,i)=>({s,i})).filter(x=>x.s!=='確認済み');
+ if(!unresolved.length)return {priority:'3項目とも確認済み',steps:['確認済みの内容とコメントを関係者に共有する。',d.next,'次の判断をする人と期限を確認する。']};
+ const x=unresolved[0],q=d.qs[x.i],remaining=unresolved.slice(1);
+ const steps=x.s==='確認できない'
+ ? [`「${q[2]}」を確認できない理由を整理する（資料不足・担当者不明・判断未了など）。`,`${q[3]}に、必要な資料の所在や判断できる人を確認する。`,`確認の手掛かりが得られたら、${q[4]}。`]
+ : [`${q[3]}に「${q[2]}」を確認する。`,`${q[4]}。`,remaining.length?`ほかの未解決項目（${remaining.map(z=>z.i+1).join('・')}番）も、担当者と確認方法を決める。`:'確認した結果を関係者と共有し、次の判断につなげる。'];
+ return {priority:`${x.i+1}. ${q[2]}`,steps};
+}
+function makeMemo(){const d=DATA[index],r=recommendation(),s=$('situation').value.trim(),owner=$('owner').value.trim(),date=formattedDate()[1];return `【建築計画の交通整理｜相談メモ】\n\n■ 困っていること\n${d.name}\n\n■ 現在の状況\n${s||'未記入'}\n\n■ 3つの確認事項\n${d.qs.map((q,i)=>`${i+1}. ${q[0]}\n状態：${statuses[i]}\nコメント：${notes[i].trim()||'未記入'}`).join('\n\n')}\n\n■ 最優先で整理すること\n${r.priority}\n\n■ 次の行動\n${r.steps.map((step,i)=>`${i+1}. ${step}`).join("\n")}\n\n■ 確認する人\n${owner||'未定'}\n\n■ 確認予定日\n${date}\n\n※本メモは入力内容に基づく整理の補助です。法令・設計・予算・工程の専門的な確認や判断に代わるものではありません。`}
+function refresh(){$('dateDisplay').textContent=formattedDate()[0];$('memo').textContent=makeMemo()}
+$('situation').addEventListener('input',refresh);$('owner').addEventListener('input',refresh);$('nativeDate').addEventListener('change',refresh);$('pickDate').addEventListener('click',()=>{const el=$('nativeDate');try{el.showPicker()}catch(e){el.focus();el.click()}});$('clearDate').addEventListener('click',()=>{$('nativeDate').value='';refresh()});$('copy').addEventListener('click',async()=>{const txt=makeMemo();try{await navigator.clipboard.writeText(txt);$('feedback').textContent='相談メモをコピーしました。'}catch(e){const ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');$('feedback').textContent='相談メモをコピーしました。'}catch(err){$('feedback').textContent='コピーできませんでした。メモを長押ししてコピーしてください。'}ta.remove()}});function printText(parent,tag,className,value){const el=document.createElement(tag);if(className)el.className=className;el.textContent=value;parent.appendChild(el);return el}
+function printSection(root,title,value){const sec=printText(root,'section','ps','');printText(sec,'h2','',title);printText(sec,'div','pv',value||'未記入');return sec}
+function preparePrint(){
+ const root=$('printSheet');root.replaceChildren();root.className='';
+ const d=DATA[index],r=recommendation();
+ const head=printText(root,'header','ph','');printText(head,'h1','','建築計画の交通整理｜相談メモ');printText(head,'div','subtitle','無料Web版／確認事項と次の行動');
+ printSection(root,'困っていること',d.name);
+ printSection(root,'現在の状況',$('situation').value.trim());
+ const sec=printText(root,'section','ps','');printText(sec,'h2','','3つの確認事項');
+ d.qs.forEach((q,i)=>{const row=printText(sec,'div','question','');printText(row,'div','qtitle',`${i+1}. ${q[0]}`);printText(row,'div','qstate',`回答：${statuses[i]}`);printText(row,'div','qnote',`コメント：${notes[i].trim()||'未記入'}`)});
+ printSection(root,'最優先で整理すること',r.priority);
+ const act=printText(root,'section','ps next-actions','');printText(act,'h2','','次の行動｜まず取り組む3つのこと');const ol=printText(act,'ol','','');r.steps.forEach(step=>printText(ol,'li','',step));
+ const grid=printText(root,'div','pgrid','');printSection(grid,'確認する人',$('owner').value.trim()||'未定');printSection(grid,'確認予定日',formattedDate()[1]||'未設定');
+ printText(root,'div','footnote','※入力内容に基づく整理の補助です。法令・設計・予算・工程の専門的な確認や判断に代わるものではありません。');
+ // Fit ordinary written responses into A4 without removing questions, statuses, or comments.
+ const mmToPx=96/25.4, maxHeight=277*mmToPx;
+ if(root.scrollHeight>maxHeight)root.classList.add('compact');
+ if(root.scrollHeight>maxHeight)root.classList.add('tight');
+ if(root.scrollHeight>maxHeight){
+   let size=7;
+   while(root.scrollHeight>maxHeight && size>5){size-=.25;root.style.fontSize=size+'pt';root.style.lineHeight='1.08';}
+ }
+}
+$('print').addEventListener('click',()=>{preparePrint();window.print()});
+window.addEventListener('beforeprint',preparePrint);
+drawProblems();drawQuestions();refresh();
+/* 複数の困りごとを切り替えても入力を保持する検証版 */
+const CATEGORY_KEY='kenchiku-tool-category-migration-v2-drafts';
+let categoryDrafts={};
+function saveCategoryDraft(){categoryDrafts[index]={situation:$('situation').value,statuses:[...statuses],notes:[...notes]};try{localStorage.setItem(CATEGORY_KEY,JSON.stringify(categoryDrafts))}catch(e){}}
+function loadCategoryDraft(){const d=categoryDrafts[index]||{};statuses=Array.isArray(d.statuses)&&d.statuses.length===3?[...d.statuses]:['未確認','未確認','未確認'];notes=Array.isArray(d.notes)&&d.notes.length===3?[...d.notes]:['','',''];$('situation').value=String(d.situation||'')}
+function loadAllCategoryDrafts(){try{categoryDrafts=JSON.parse(localStorage.getItem(CATEGORY_KEY)||'{}')||{}}catch(e){categoryDrafts={}}}
+/* ブラウザ自動保存（スマホ実機検証済み） */
+const TEST_STORAGE_KEY='kenchiku-tool-category-migration-v2-current';
+function testSave(){saveCategoryDraft();try{const state={index,situation:$('situation').value,owner:$('owner').value,date:$('nativeDate').value,statuses:[...statuses],notes:[...notes]};const json=JSON.stringify(state);localStorage.setItem(TEST_STORAGE_KEY,json);const ok=localStorage.getItem(TEST_STORAGE_KEY)===json;$('testSaveStatus').textContent=ok?'保存できました（読み返し確認済み）':'保存確認に失敗しました';}catch(e){$('testSaveStatus').textContent='保存できません：'+e.message}}
+function testRestore(){try{const raw=localStorage.getItem(TEST_STORAGE_KEY);if(!raw){$('testSaveStatus').textContent='まだ保存データがありません';return}const d=JSON.parse(raw);if(!Number.isInteger(d.index)||d.index<0||d.index>=DATA.length)throw Error('データ不正');index=d.index;statuses=Array.isArray(d.statuses)&&d.statuses.length===3?d.statuses:['未確認','未確認','未確認'];notes=Array.isArray(d.notes)&&d.notes.length===3?d.notes:['','',''];drawProblems();drawQuestions();$('situation').value=String(d.situation||'');$('owner').value=String(d.owner||'');$('nativeDate').value=String(d.date||'');refresh();$('testSaveStatus').textContent='前回の入力を復元しました（既存保存データ引継ぎ対応）'}catch(e){$('testSaveStatus').textContent='復元失敗：'+e.message}}
+document.addEventListener('input',testSave);
+document.addEventListener('change',testSave);
+loadAllCategoryDrafts();
+if(!localStorage.getItem(TEST_STORAGE_KEY)){
+ try{
+  const oldDrafts=JSON.parse(localStorage.getItem('kenchiku-tool-category-drafts-v1')||'{}')||{};
+  const oldCurrent=JSON.parse(localStorage.getItem('kenchiku-tool-preview-autosave-20261111')||'null');
+  categoryDrafts={...oldDrafts};
+  if(oldCurrent&&Number.isInteger(oldCurrent.index)&&oldCurrent.index>=0&&oldCurrent.index<DATA.length){
+   categoryDrafts[oldCurrent.index]={situation:String(oldCurrent.situation||''),statuses:oldCurrent.statuses,notes:oldCurrent.notes};
+   localStorage.setItem(TEST_STORAGE_KEY,JSON.stringify(oldCurrent));
+  }
+ }catch(e){$('testSaveStatus').textContent='引き継ぎ確認に失敗：'+e.message}
+}
+testRestore();
+if(categoryDrafts[index]){loadCategoryDraft();drawQuestions();refresh()}else{saveCategoryDraft()}
+</script></body></html>
